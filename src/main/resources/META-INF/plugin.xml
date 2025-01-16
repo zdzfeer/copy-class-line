@@ -1,0 +1,56 @@
+<idea-plugin>
+    <id>com.github.52523.copyclassline</id>
+    <name>Copy Class and Line Number</name>
+    <version>1.0.0</version>
+    
+    <vendor email="525239245@qq.com" url="https://github.com/52523">52523</vendor>
+
+    <description><![CDATA[
+      A simple plugin to copy the current class name and line number.<br><br>
+      
+      <b>Features:</b><br>
+      <ul>
+        <li>Copy the current class name and line number with one click</li>
+        <li>Available in the editor context menu (right-click menu)</li>
+        <li>Available in the Edit menu</li>
+        <li>Keyboard shortcut: Ctrl+Alt+C</li>
+      </ul>
+      
+      <b>Usage:</b><br>
+      <ul>
+        <li>Right-click in editor -> Copy Class:Line</li>
+        <li>Edit menu -> Copy Class:Line</li>
+        <li>Press Ctrl+Alt+C</li>
+      </ul>
+      
+      <b>Output Format:</b><br>
+      ClassName:LineNumber
+    ]]></description>
+
+    <change-notes><![CDATA[
+      <b>1.0.0</b><br>
+      <ul>
+        <li>Initial release</li>
+        <li>Basic functionality to copy class name and line number</li>
+        <li>Editor context menu integration</li>
+        <li>Edit menu integration</li>
+        <li>Keyboard shortcut (Ctrl+Alt+C)</li>
+      </ul>
+    ]]></change-notes>
+
+    <idea-version since-build="233" until-build="233.*"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <actions>
+        <action id="CopyClassAndLine" 
+                class="actions.CopyClassAndLineAction" 
+                text="Copy Class:Line" 
+                description="Copy current class name and line number">
+            <add-to-group group-id="EditMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt C"/>
+        </action>
+    </actions>
+</idea-plugin>
