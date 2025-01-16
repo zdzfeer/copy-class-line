@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.2'
+}
+
+wrapper {
+    gradleVersion = '7.6'
+}
+
+group 'com.your.plugin'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+intellij {
+    localPath = 'C:\\Apps\\IntelliJ IDEA 2023.3'
+    plugins = ['java']
+    updateSinceUntilBuild = false
+}
+
+tasks.named('buildSearchableOptions').configure {
+    enabled = false
+}
+
+test {
+    useJUnitPlatform()
+}
+
+patchPluginXml {
+    sinceBuild = '233'
+    untilBuild = '233.*'
+} 
